@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo PWA</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./index.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/favicon.png" type="image/png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#0ea5e9" />
+</head>
+<body>
+  <header>
+    <h1>Todo PWA</h1>
+    <form id="new-task-form" autocomplete="off">
+      <input id="new-task-input" type="text" placeholder="What do you have planned?" required />
+      <input id="new-task-submit" type="submit" value="Add task" />
+    </form>
+  </header>
+
+  <main>
+    <section class="task-list">
+      <h2>Tasks</h2>
+      <div id="tasks"></div>
+    </section>
+  </main>
+
+  <!-- Dexie -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/4.2.0/dexie.min.js"
+    integrity="sha512-LuXLH9xON6/aAGYxi4Z1Dx8588Z80gY3iMmGtUlYmblUc1ulC/cGHuANXIvm8fnIWp5ShUk2MRBIWylGguXF9g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Tu lógica -->
+  <script src="./index.js" defer></script>
+
+  <!-- Registro del Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+      });
+    }
+  </script>
+</body>
+</html>
